@@ -2,11 +2,12 @@
 """
 Train a multiclass classifier to predict payment_type.
 
-Features (4):
+Features (4+1):
 - trip_distance
 - trip_duration_min (derived from pickup/dropoff timestamps)
 - passenger_count
 - RatecodeID
++ pickup_hour
 
 Target:
 - payment_type
@@ -39,7 +40,13 @@ from sklearn.ensemble import RandomForestClassifier
 import joblib
 
 
-FEATURES = ["trip_distance", "trip_duration_min", "passenger_count", "RatecodeID"]
+FEATURES = [
+    "trip_distance",
+    "trip_duration_min",
+    "passenger_count",
+    "RatecodeID",
+    "pickup_hour",
+]
 TARGET = "payment_type"
 
 
@@ -60,9 +67,14 @@ def add_trip_duration_minutes(df: pd.DataFrame) -> pd.DataFrame:
     df["lpep_dropoff_datetime"] = pd.to_datetime(
         df["lpep_dropoff_datetime"], errors="coerce"
     )
+
     df["trip_duration_min"] = (
         df["lpep_dropoff_datetime"] - df["lpep_pickup_datetime"]
     ).dt.total_seconds() / 60.0
+
+    # ✅ NEW FEATURE
+    df["pickup_hour"] = df["lpep_pickup_datetime"].dt.hour
+
     return df
 
 
