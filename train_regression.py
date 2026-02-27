@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
-Train a regression model to predict fare_amount from 4 features.
+Train a regression model to predict fare_amount from 4+1 features.
 
 Features used:
 - trip_distance
 - trip_duration_min (derived)
 - passenger_count
 - RatecodeID
++ pickup_hour
 
 Target:
 - fare_amount
@@ -30,7 +31,13 @@ from sklearn.ensemble import RandomForestRegressor
 import joblib
 
 
-FEATURES = ["trip_distance", "trip_duration_min", "passenger_count", "RatecodeID"]
+FEATURES = [
+    "trip_distance",
+    "trip_duration_min",
+    "passenger_count",
+    "RatecodeID",
+    "pickup_hour",
+]
 TARGET = "fare_amount"
 
 
@@ -52,9 +59,14 @@ def add_trip_duration_minutes(df: pd.DataFrame) -> pd.DataFrame:
     df["lpep_dropoff_datetime"] = pd.to_datetime(
         df["lpep_dropoff_datetime"], errors="coerce"
     )
+
     df["trip_duration_min"] = (
         df["lpep_dropoff_datetime"] - df["lpep_pickup_datetime"]
     ).dt.total_seconds() / 60.0
+
+    # ✅ NEW FEATURE
+    df["pickup_hour"] = df["lpep_pickup_datetime"].dt.hour
+
     return df
 
 
