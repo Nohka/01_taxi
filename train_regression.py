@@ -117,7 +117,9 @@ def build_model(random_state: int = 42) -> Pipeline:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--data", default="green_tripdata_2021-01.parquet", help="Path to parquet file"
+        "--data",
+        default="data/green_tripdata_2021-01.parquet",
+        help="Path to parquet file",
     )
     parser.add_argument(
         "--outdir", default="models", help="Directory to save trained model"
