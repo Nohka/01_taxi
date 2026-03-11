@@ -10,6 +10,7 @@ __pycache__/
 # Data files
 *.parquet
 *.csv
+*.zip
 
 # Jupyter
 .ipynb_checkpoints/
