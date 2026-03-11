@@ -10,10 +10,10 @@ __pycache__/
 # Data files
 *.parquet
 *.csv
+*.zip
 
 # Jupyter
 .ipynb_checkpoints/
 
 # macOS
 .DS_Store
-/data
