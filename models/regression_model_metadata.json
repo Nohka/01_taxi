@@ -1,0 +1,19 @@
+{
+  "target": "fare_amount",
+  "features": [
+    "trip_distance",
+    "trip_duration_min",
+    "passenger_count",
+    "RatecodeID",
+    "pickup_hour"
+  ],
+  "model": "RandomForestRegressor",
+  "metrics": {
+    "mae": 0.6087404991329866,
+    "rmse": 3.09526124645717,
+    "r2": 0.9532741435768189
+  },
+  "rows_after_cleaning": 37930,
+  "test_size": 0.2,
+  "random_state": 42
+}
