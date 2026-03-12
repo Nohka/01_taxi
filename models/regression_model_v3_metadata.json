@@ -1,0 +1,33 @@
+{
+  "version": 3,
+  "task": "Train updated regression model on combined Jan+Feb training set and evaluate on combined Jan+Feb test set",
+  "data_files": [
+    "data/green_tripdata_2021-01.parquet",
+    "data/green_tripdata_2021-02.parquet"
+  ],
+  "features": [
+    "trip_distance",
+    "trip_duration_min",
+    "passenger_count",
+    "RatecodeID",
+    "pickup_hour"
+  ],
+  "target": "fare_amount",
+  "rows_before_cleaning": 141090,
+  "rows_after_cleaning": 71475,
+  "train_rows": 57180,
+  "test_rows": 14295,
+  "test_size": 0.2,
+  "random_state": 42,
+  "model": "RandomForestRegressor",
+  "metrics": {
+    "mae": 0.5535376101064222,
+    "rmse": 2.805063801538796,
+    "r2": 0.9607951888540891
+  },
+  "notes": [
+    "Data version unchanged from v2.",
+    "Model retrained on combined January and February training set.",
+    "Training code updated for version 3."
+  ]
+}
