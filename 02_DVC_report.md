@@ -2,9 +2,7 @@
 
 ## Overview
 
-In this task we experimented with different **data versions** while working with the same regression model for taxi fare prediction.
-
-The goal was to understand how model evaluation changes when new data is introduced and how DVC helps track these dataset versions.
+In this task I experimented with different **data versions** while working with the same regression model for taxi fare prediction. The goal was to understand how model evaluation changes when new data is introduced and how DVC helps track these dataset versions.
 
 Three experiment versions were created:
 
@@ -51,7 +49,7 @@ The model performs quite well and explains around **95.3% of the variance** in t
 
 # Version 2 — Evaluation on Expanded Dataset
 
-For version 2, we added **February data** to the dataset.
+For version 2,  added **February data** to the dataset.
 
 However, the model itself was **not retrained**.  
 Instead, the **existing V1 model** was evaluated on a new dataset split created from **January + February data combined**.
@@ -186,7 +184,7 @@ If major data drift is detected, the model should be **retrained with newer data
 
 ## 2. Model Performance Metric — Prediction Error
 
-If real taxi fares become available after prediction, we can measure prediction error over time.
+If real taxi fares become available after prediction, I could measure prediction error over time.
 
 Example metrics:
 
